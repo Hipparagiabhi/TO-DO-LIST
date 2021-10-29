@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.main{
+    display: flex;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+    height: 100Vh;
+    
+}
+
+.container{
+    border:2px solid black;
+    /* border-radius: 20px; */
+    background: beige;
+    height:300px;
+    width: 400px;
+    padding: 20px;
+   
+}
+
+input{
+    height: 30px;
+    width: 300px;
+}
+
+button{
+    height: 30px;  
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+             <h2>Todo App</h2>
+             <input type="text" id="textbox1" placeholder="Add your new todo">
+             <button type ="button" id="btn1">Add Todo</button>
+             <ul class ="todolist" id="todolist">
+                 <!-- <li>this is computer</li>
+                 <li>this is computer</li>
+                 <li>this is computer</li> -->
+             </ul>
+             <p class="demo" id=demo> </p>
+             <button type ="button" id="btn2">clear All</button>
+             <!-- <button type ="button" id="btn3">Delete Single Task</button> -->
+             <!-- <p class="demo" id=demo></p>
+             <p class="demo1" id=demo1></p>
+             <p class="demo2" id=demo3></p> -->
+        </div>
+</div>
+
+    <Script>
+        let addtodo=document.getElementById("textbox1");
+        let button=document.getElementById("btn1");
+        let button1=document.getElementById("btn2");
+        let button2=document.getElementById("btn3");
+        let todolist=document.getElementById("todolist");
+        let pending=document.getElementById("demo");
+        let newarray=[];
+
+        button.onclick=handler;
+
+        function handler(){
+            let inputbox1=addtodo.value;
+            newarray.push(inputbox1);
+            console.log(newarray);
+            // let c= newarray.join(" ");
+            // console.log(c);
+            let newtask= "";
+           newarray.forEach(function(element){
+               newtask+= `<li>${element}</li>`;
+               })
+               todolist.innerHTML= newtask;
+                addtodo.value= "";
+                let pendinglist=newarray.length;
+               console.log(pendinglist);
+               document.getElementById("demo").innerHTML=`You have ${pendinglist}  pending Todo List`;
+
+
+        }
+
+        button1.onclick=handler2;
+
+        function handler2(){
+
+          newarray=[];
+          console.log(newarray);
+          document.getElementById("todolist").innerHTML=newarray;
+          let pendinglist1=newarray.length;
+          document.getElementById("demo").innerHTML=`You have ${pendinglist1} pending Todo List`;
+        }
+        
+        
+
+
+
+
+        
+        </script>
+</body>
+</html>
